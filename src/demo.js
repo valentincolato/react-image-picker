@@ -45,8 +45,9 @@ class Demo extends Component {
         <h1>React Image Picker</h1>
         <h3>Single Select</h3>
         <ImagePicker
-          images={imageList.map((image, i) => ({src: image, value: i}))}
+          images={imageList.map((image, i) => ({src: image, value: i+1}))}
           onPick={this.onPickImage.bind(this)}
+          isSelected={1}
         />
         <textarea rows="4" cols="100" value={this.state.image && JSON.stringify(this.state.image)} disabled/>
         

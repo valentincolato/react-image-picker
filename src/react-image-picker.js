@@ -15,7 +15,7 @@ class ImagePicker extends Component {
     this.renderImage = this.renderImage.bind(this)
   }
 
-  handleImageClick(image) {
+   handleImageClick(image) {
     const { multiple, onPick, maxPicks, onMaxPicks } = this.props
     const pickedImage = multiple ? this.state.picked : Map()
     let newerPickedImage
@@ -44,9 +44,24 @@ class ImagePicker extends Component {
     }
   }
 
-  useEffect(() => {
-    handleImageClick(image[this.props.isSelected])
-  }, [this.props.isSelected])
+  setImage(){
+    const image = this.props.images.find((element) => {
+        return element.value === this.props.isSelected;
+      })
+    this.handleImageClick(image);
+  }
+
+  componentDidMount() {
+    if (this.props.isSelected){
+      this.setImage()
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isSelected !== this.props.isSelected) {
+      this.setImage()
+    }
+}
 
   renderImage(image, i) {
     return (
