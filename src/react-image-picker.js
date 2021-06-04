@@ -72,6 +72,7 @@ ImagePicker.propTypes = {
   onPick: PropTypes.func,
   maxPicks: PropTypes.number,
   onMaxPicks: PropTypes.func,
+  isSelected: PropTypes.number
 }
 
 export default ImagePicker
