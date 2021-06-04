@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Map } from 'immutable'
 
@@ -43,6 +43,10 @@ class ImagePicker extends Component {
       onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
     }
   }
+
+  useEffect(() => {
+    handleImageClick(image[this.props.isSelected])
+  }, [this.props.isSelected])
 
   renderImage(image, i) {
     return (
